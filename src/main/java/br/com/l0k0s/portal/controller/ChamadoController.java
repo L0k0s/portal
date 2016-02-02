@@ -11,6 +11,7 @@ import br.com.caelum.vraptor.view.Results;
 import br.com.l0k0s.portal.interfaces.repositorio.ChamadoRepositorio;
 import br.com.l0k0s.portal.model.Chamado;
 import br.com.l0k0s.portal.model.UsuarioLogado;
+import br.com.l0k0s.portal.validation.ChamadoValidator;
 
 @Controller
 
@@ -18,23 +19,23 @@ public class ChamadoController {
 
 	private ChamadoRepositorio chamadoRepositorio;
 	private Result result;
-	
+	private ChamadoValidator chamadoValidator;
 
 	@Deprecated
 	protected ChamadoController() {
 	}
 
 	@Inject
-	public ChamadoController(ChamadoRepositorio chamadoRepositorio, Result result) {
+	public ChamadoController(ChamadoRepositorio chamadoRepositorio, Result result, ChamadoValidator chamadoValidator) {
 		this.chamadoRepositorio = chamadoRepositorio;
 		this.result = result;
-
+		this.chamadoValidator = chamadoValidator;
 	}
 
 	@Post("/chamados")
 	@Consumes("application/json")
 	public void salva(Chamado chamado) {
-		
+		chamadoValidator.validator(chamado);
  		chamado.getListaHistoricoChamados().get(0).getUsuario().setId(UsuarioLogado.usuarioDTO.getUsuarioId());
 		chamadoRepositorio.guarda(chamado);
 	}
