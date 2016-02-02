@@ -1,0 +1,28 @@
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  
+  <persistence-unit name="default" transaction-type="JTA">
+    <jta-data-source>java:/MySqlDSOpen</jta-data-source>
+    
+    <class> br.com.l0k0s.portal.model.Assinante </class>
+    <class> br.com.l0k0s.portal.model.Categoria </class>
+    <class> br.com.l0k0s.portal.model.Chamado </class>
+    <class> br.com.l0k0s.portal.model.ContatoAssinante </class>
+    <class> br.com.l0k0s.portal.model.Endereco </class>
+    <class> br.com.l0k0s.portal.model.HistoricoChamado </class>
+    <class> br.com.l0k0s.portal.model.Os </class>
+    <class> br.com.l0k0s.portal.model.Plano </class>
+    <class> br.com.l0k0s.portal.model.Servico </class>
+    <class> br.com.l0k0s.portal.model.Setor </class>
+    <class> br.com.l0k0s.portal.model.Status </class>
+    <class> br.com.l0k0s.portal.model.Titulo </class>
+    <class> br.com.l0k0s.portal.model.Usuario </class>
+    <class> br.com.l0k0s.portal.model.AssinantePlano </class>
+    
+    <properties>
+      <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform"/>
+      <property name="hibernate.hbm2ddl.auto" value="update"/>
+      <property name="hibernate.show_sql" value = "true" /> 
+    </properties>
+  </persistence-unit>
+  
+</persistence>
